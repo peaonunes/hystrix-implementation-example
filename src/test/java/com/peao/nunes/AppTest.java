@@ -1,4 +1,4 @@
-package org.peao.nunes;
+package com.peao.nunes;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
