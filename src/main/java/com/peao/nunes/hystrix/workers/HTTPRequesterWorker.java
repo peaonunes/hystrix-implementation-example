@@ -15,8 +15,7 @@ public class HTTPRequesterWorker {
     public HTTPRequesterWorker(String url) {
         this.URL = url;
         this.CLIENT = new HttpClient();
-        this.GETMETHOD = new GetMethod(url);
-        this.configureRetry();
+        this.buildGetMethod();
     }
 
     public HashMap<String, String> healthCheck() throws Exception {
@@ -43,6 +42,11 @@ public class HTTPRequesterWorker {
         hashMap.put("message", "");
         hashMap.put("exception", "");
         return hashMap;
+    }
+
+    private void buildGetMethod() {
+        this.GETMETHOD = new GetMethod(this.URL);
+        this.configureRetry();
     }
 
     private void configureRetry() {
