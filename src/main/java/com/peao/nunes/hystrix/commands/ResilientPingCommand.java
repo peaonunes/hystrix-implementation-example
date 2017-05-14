@@ -2,6 +2,7 @@ package com.peao.nunes.hystrix.commands;
 
 import com.netflix.hystrix.HystrixCommand;
 import com.netflix.hystrix.HystrixCommandGroupKey;
+import com.netflix.hystrix.HystrixCommandProperties;
 import com.peao.nunes.hystrix.workers.HTTPRequesterWorker;
 
 import java.util.HashMap;
@@ -12,7 +13,14 @@ public class ResilientPingCommand extends HystrixCommand<String> {
 
     public ResilientPingCommand(String url) {
         super(Setter
-                .withGroupKey(HystrixCommandGroupKey.Factory.asKey("PingGroup")));
+                .withGroupKey(HystrixCommandGroupKey.Factory.asKey("PingGroup"))
+                .andCommandPropertiesDefaults(
+                        HystrixCommandProperties.Setter()
+                                .withCircuitBreakerEnabled(true)
+                                .withCircuitBreakerRequestVolumeThreshold(4)
+                                .withCircuitBreakerSleepWindowInMilliseconds(5000)
+                                .withExecutionTimeoutInMilliseconds(1000))
+        );
         this.worker = new HTTPRequesterWorker(url);
     }
 
