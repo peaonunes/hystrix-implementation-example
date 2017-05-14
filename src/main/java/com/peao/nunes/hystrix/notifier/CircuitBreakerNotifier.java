@@ -1,6 +1,10 @@
 package com.peao.nunes.hystrix.notifier;
 
-public class CircuitBreakerNotifier {
+import com.netflix.hystrix.HystrixCommandKey;
+import com.netflix.hystrix.HystrixEventType;
+import com.netflix.hystrix.strategy.eventnotifier.HystrixEventNotifier;
+
+public class CircuitBreakerNotifier extends HystrixEventNotifier {
 
     private CircuitBreakerNotifier() {}
 
@@ -8,5 +12,13 @@ public class CircuitBreakerNotifier {
 
     public static CircuitBreakerNotifier getCircuitBreakerListenerInstance() {
         return INSTANCE;
+    }
+
+    public void markEvent(HystrixEventType eventType, HystrixCommandKey key) {
+
+        if(eventType.equals(HystrixEventType.SHORT_CIRCUITED)) {
+            System.out.println("<NOTIFIER> :: Short Circuited is Open!");
+        }
+
     }
 }
