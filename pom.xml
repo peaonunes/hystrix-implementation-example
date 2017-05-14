@@ -43,5 +43,10 @@
       <artifactId>commons-httpclient</artifactId>
       <version>3.1</version>
     </dependency>
+    <dependency>
+      <groupId>com.netflix.hystrix</groupId>
+      <artifactId>hystrix-servo-metrics-publisher</artifactId>
+      <version>1.5.11</version>
+    </dependency>
   </dependencies>
 </project>

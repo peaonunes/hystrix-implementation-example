@@ -10,7 +10,7 @@ public class CircuitBreakerNotifier extends HystrixEventNotifier {
 
     private static CircuitBreakerNotifier INSTANCE = new CircuitBreakerNotifier();
 
-    public static CircuitBreakerNotifier getCircuitBreakerListenerInstance() {
+    public static CircuitBreakerNotifier getCircuitBreakerNotifierInstance() {
         return INSTANCE;
     }
 
