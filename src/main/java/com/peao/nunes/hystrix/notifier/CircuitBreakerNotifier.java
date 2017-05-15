@@ -6,7 +6,7 @@ public class CircuitBreakerNotifier {
 
     private static CircuitBreakerNotifier INSTANCE = new CircuitBreakerNotifier();
 
-    public static CircuitBreakerNotifier getCircuitBreakerListenerInstance() {
+    public static CircuitBreakerNotifier getCircuitBreakerNotifierInstance() {
         return INSTANCE;
     }
 }
