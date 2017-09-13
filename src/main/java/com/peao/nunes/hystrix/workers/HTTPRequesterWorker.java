@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.io.*;
 
 public class HTTPRequesterWorker {
-    private static final String RESPONSE_MESSAGE = "Status code: %d from &s";
+    private static final String RESPONSE_MESSAGE = "Status code: %d from %s";
     private static String URL;
     private static HttpClient CLIENT;
     private static GetMethod GETMETHOD;
